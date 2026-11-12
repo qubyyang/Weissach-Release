@@ -4,6 +4,26 @@ Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面�
 
 支持 18 个客户端：Claude Code、Codex、GitHub Copilot、Cursor、Gemini CLI、Antigravity CLI、CodeBuddy、Tencent WorkBuddy、Qoder、Qoder CN、QoderWork、Qwen Code、Kimi CLI、OpenCode、Pi Agent、Oh My Pi、Hermes、OpenClaw。Weissach 只观察会话状态，所有权限确认和问题仍由原客户端处理。
 
+## 截图
+
+<p align="center"><img src="screenshots/car.png" width="256" alt="悬浮在桌面上的座驾"></p>
+
+**车库**：十款车型，随里程逐步解锁。
+
+![车库里的经典收藏](screenshots/garage.png)
+
+**配置**：检测本机已安装的客户端，逐个接入或移除。
+
+![配置 tab](screenshots/config.png)
+
+**Token 用量**：只读取本机记录，按天统计。
+
+![Token 用量 tab](screenshots/token.png)
+
+**赛道**：圈数、行驶时长、里程与出勤。
+
+![赛道 tab](screenshots/track.png)
+
 ## 下载
 
 **[下载 Weissach-1.0.0-mac-universal.dmg](https://github.com/qubyyang/Weissach-Release/releases/latest/download/Weissach-1.0.0-mac-universal.dmg)**

@@ -26,7 +26,7 @@ Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面�
 
 ## 下载
 
-**[下载 Weissach-1.0.0-mac-universal.dmg](https://github.com/qubyyang/Weissach-Release/releases/latest/download/Weissach-1.0.0-mac-universal.dmg)**
+**[下载 Weissach-1.0.1-mac-universal.dmg](https://github.com/qubyyang/Weissach-Release/releases/latest/download/Weissach-1.0.1-mac-universal.dmg)**
 
 历史版本见 [Releases](https://github.com/qubyyang/Weissach-Release/releases)。
 
@@ -44,13 +44,13 @@ Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面�
 ## 校验
 
 ```sh
-shasum -a 256 Weissach-1.0.0-mac-universal.dmg
+shasum -a 256 Weissach-1.0.1-mac-universal.dmg
 ```
 
-1.0.0 的 SHA-256：
+1.0.1 的 SHA-256：
 
 ```
-cda78b5108c6967e1cad42c948176f844bfd620d945ac135d3c0302ac62c2d3c
+9504a2576bc3655dc5a66ed066e5f57924f507215f16b263212de7f5b2c70deb
 ```
 
 ## 使用

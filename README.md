@@ -1,6 +1,6 @@
 # Weissach
 
-Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面的编码搭档。十款原创像素车型，用五种动画状态陪伴编码。主窗口分为四个 tab：**车库**（车型、演示、实时会话）、**配置**（客户端接入）、**Token 用量**（本机用量统计）、**赛道**（圈数、里程与出勤统计）。
+Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面的编码搭档。十款原创像素车型，用五种动画状态陪伴编码。主窗口分为四个 tab：**车库**（车型、演示、实时会话）、**配置**（客户端接入）、**Token 用量**（本机用量统计）、**赛道**（圈数、里程、出勤与进站统计）。
 
 支持 18 个客户端：Claude Code、Codex、GitHub Copilot、Cursor、Gemini CLI、Antigravity CLI、CodeBuddy、Tencent WorkBuddy、Qoder、Qoder CN、QoderWork、Qwen Code、Kimi CLI、OpenCode、Pi Agent、Oh My Pi、Hermes、OpenClaw。Weissach 只观察会话状态，所有权限确认和问题仍由原客户端处理。
 
@@ -20,13 +20,13 @@ Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面�
 
 ![Token 用量 tab](screenshots/token.png)
 
-**赛道**：圈数、行驶时长、里程与出勤。
+**赛道**：圈数、行驶时长、里程与出勤；切到「进站」看会话等了你多久。
 
 ![赛道 tab](screenshots/track.png)
 
 ## 下载
 
-**[下载 Weissach-1.4.0-mac-universal.dmg](https://github.com/qubyyang/Weissach-Release/releases/latest/download/Weissach-1.4.0-mac-universal.dmg)**
+**[下载 Weissach-1.5.0-mac-universal.dmg](https://github.com/qubyyang/Weissach-Release/releases/latest/download/Weissach-1.5.0-mac-universal.dmg)**
 
 历史版本见 [Releases](https://github.com/qubyyang/Weissach-Release/releases)。
 
@@ -44,13 +44,13 @@ Weissach 以保时捷研发中心命名，是一个独立悬浮在 macOS 桌面�
 ## 校验
 
 ```sh
-shasum -a 256 Weissach-1.4.0-mac-universal.dmg
+shasum -a 256 Weissach-1.5.0-mac-universal.dmg
 ```
 
-1.4.0 的 SHA-256：
+1.5.0 的 SHA-256：
 
 ```
-1ee599372f0a7f52c0ddaba5790ad645722df08fc7fb391f08a87106f4f5c0ad
+d05325e646f1ddd3b158f4d856928dbaeec3d5b03dc7631a5dd6f90071ac6a3d
 ```
 
 ## 使用
@@ -61,11 +61,14 @@ shasum -a 256 Weissach-1.4.0-mac-universal.dmg
 - 有会话等你回应或中断时，Weissach 发一条系统通知，点击通知就跳到那个会话。几个会话同时需要你时合并成一条，全部处理完后通知自动撤掉。会话跑完的提醒默认关闭，两个开关都在「配置」tab 的「提醒」里。第一次提醒时 macOS 会问是否允许 Weissach 发通知；专注模式和系统的通知设置照常生效。
 - 跳转（点击座驾标签或菜单里的会话、按快捷键、点击通知）会尽量到具体的位置：Terminal、iTerm2 和 Ghostty 到标签页，Xcode 和 VS Code 到项目窗口，WorkBuddy 和 GitHub Copilot App 到会话，其他 App 只切到前台。「配置」tab 的「跳转」一节列出本机每个目标的级别。第一次跳到 Terminal、iTerm2、Ghostty 或 Xcode 时，macOS 会问是否允许 Weissach 控制它；拒绝后只切到 App。Weissach 不申请辅助功能权限。
 - 全局快捷键「跳到待处理会话」默认 `⌃⌥⌘J`，可在主窗口底栏修改或关闭。通过 Weissach 跳转到一个会话即视为已看；也可以在菜单栏或座驾的右键菜单里选择「全部标为已看」。
+- 「赛道」tab 顶部可以在「圈」和「进站」之间切换。会话等你回应、中断或跑完时算一次进站，到你回去为止。「进站」一边显示次数、中位时长、最长一次和未回应的次数，与上一个同样长的时段的对比，以及趋势、按类型和按客户端的拆分。「该你回应」（待回应和中断）与「跑完」分开统计；时长只算你回去了的进站，关掉会话或退出 Weissach 而结束的计入「未回应」。「跑完」的时长包含你不在电脑前的时间，只适合看趋势。
 - 有新版本时，主窗口底栏和菜单栏菜单里会出现「有新版本 → 下载」，点击打开下载页。Weissach 不会自己下载或安装。
 
 ## 数据
 
 数据保存在本机 `~/Library/Application Support/Weissach`。卸载时删除 App 和这个目录即可。
+
+进站统计读的是本机的进站记录，每行只有客户端、开始时间、类型、等待时长和结束方式；它从 1.1 起就在记，1.5 没有新增任何记录的数据。在「配置」tab 清空里程记录时一并删除。
 
 从 1.4 起，为了跳到对应的项目窗口，接入的 hook 会把会话的完整工作目录放进实时事件。它只存在于待读取的事件文件（Weissach 读取后即删除；Weissach 没在运行时，最后一批事件会留到下次读取）和 Weissach 的内存中，不写入任何记录，不显示在界面上，不进通知，不联网。
 

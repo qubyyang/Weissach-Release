@@ -50,7 +50,7 @@ shasum -a 256 Weissach-1.5.0-mac-universal.dmg
 1.5.0 的 SHA-256：
 
 ```
-d05325e646f1ddd3b158f4d856928dbaeec3d5b03dc7631a5dd6f90071ac6a3d
+ae38dae8e3e392ce66b19fb9d399ee6977fced4c0e426e016bb62bf38fb0b862
 ```
 
 ## 使用
